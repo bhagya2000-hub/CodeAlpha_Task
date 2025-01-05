@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enhanced Image Gallery</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    
+    <div class="container">
+        <!-- Controls Section -->
+        <div class="controls">
+            <input type="text" class="search-bar" placeholder="Search images...">
+            <button class="theme-toggle">Dark Mode</button>
+            <script>
+            const themeToggle = document.querySelector('.theme-toggle');
+        themeToggle.addEventListener('click', () => {
+            document.body.classList.toggle('dark-mode');
+            themeToggle.textContent = document.body.classList.contains('dark-mode') 
+                ? 'Light Mode' 
+                : 'Dark Mode';
+        });
+    </script>
+        </div>
+
+        <h1 id="gallery">Image Gallery</h1>
+
+        <!-- Upload Section with Form -->
+        <div class="upload-section">
+            <form action="/upload/" enctype="multipart/form-data" method="post">
+                <label for="image-upload" class="upload-label">
+                    <i class="fas fa-upload"></i> Upload Image
+                </label>
+                <input type="file" id="image-upload" style="display: none;">
+                <button type="submit" style="display: none;">Upload</button>
+            </form>
+        </div>
+
+        <!-- Main gallery section -->
+        <div class="gallery-container">
+            <div class="loading-spinner">
+                <i class="fas fa-spinner fa-spin"></i>
+            </div>
+            <div class="main-image-container">
+                <img class="main-image" src="/api/placeholder/800/500" alt="Featured Image">
+                <button class="nav-button prev-button" aria-label="Previous image">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <button class="nav-button next-button" aria-label="Next image">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+                <div class="image-info">
+                    <h3 class="image-title">Beautiful Landscape</h3>
+                    <p class="image-description">A stunning view of nature</p>
+                    <span class="image-counter">1 / 6</span>
+                </div>
+            </div>
+
+            <!-- Thumbnail strip -->
+            <div class="thumbnail-strip">
+                <button class="scroll-button scroll-left" aria-label="Scroll thumbnails left">
+                    <i class="fas fa-angle-left"></i>
+                </button>
+                <div class="thumbnail-container" id="thumbnail-container">
+                    <img class="thumbnail active" src="images/image1.jpeg" alt="Thumbnail 1" data-title="Window View" data-description="Beautiful window with flowers">
+                    <img class="thumbnail" src="images/image2.jpg" alt="Thumbnail 2" data-title="Persian Cat" data-description="White Persian Cat">
+                    <img class="thumbnail" src="images/image3.jpeg" alt="Thumbnail 3" data-title="Couple" data-description="Couple hidden kiss">
+                    <img class="thumbnail" src="images/image4.jpeg" alt="Thumbnail 4" data-title="Dog" data-description="Cute Dog">
+                    <img class="thumbnail" src="images/image5.jpeg" alt="Thumbnail 5" data-title="Girl" data-description="Alone girl">
+                    <img class="thumbnail" src="images/1.jpg" alt="Thumbnail 6">
+                    <img class="thumbnail" src="images/2.jpg" alt="Thumbnail 7">
+                    <img class="thumbnail" src="images/3.jpg" alt="Thumbnail 8">
+                    <img class="thumbnail" src="images/4.jpg" alt="Thumbnail 9">
+                    <img class="thumbnail" src="images/5.jpg" alt="Thumbnail 10">
+                    <img class="thumbnail" src="images/6.jpg" alt="Thumbnail 11">
+                </div>
+                <button class="scroll-button scroll-right" aria-label="Scroll thumbnails right">
+                    <i class="fas fa-angle-right"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Fullscreen mode button -->
+        <button class="fullscreen-toggle" aria-label="Toggle fullscreen">
+            <i class="fas fa-expand"></i>
+        </button>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
